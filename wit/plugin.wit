@@ -32,3 +32,8 @@ world app2 {
     import factory;
     import factory2;
 }
+
+world adapter {
+    import factory;
+    export factory2;
+}
