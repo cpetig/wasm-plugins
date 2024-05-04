@@ -1,0 +1,19 @@
+[package]
+name = "plugin3"
+version = "0.1.0"
+edition = "2021"
+
+[dependencies]
+wit-bindgen-rt = { version = "0.24.0", features = ["bitflags"] }
+
+[lib]
+crate-type = ["cdylib"]
+
+[package.metadata.component]
+package = "component:plugin3"
+
+[package.metadata.component.target]
+path = "../wit/plugin.wit"
+world = "plugin2"
+
+[package.metadata.component.dependencies]

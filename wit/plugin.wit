@@ -8,10 +8,27 @@ interface factory {
     create: func() -> plugin;
 }
 
+interface factory2 {
+    resource plugin {
+        name: func() -> string;
+    }
+
+    create: func() -> plugin;
+}
+
 world plugin {
     export factory;
 }
 
+world plugin2 {
+    export factory2;
+}
+
 world app {
     import factory;
+}
+
+world app2 {
+    import factory;
+    import factory2;
 }
