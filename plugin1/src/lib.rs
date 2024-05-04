@@ -1,15 +1,18 @@
 #[allow(warnings)]
 mod bindings;
 
-use bindings::exports::test::plugins::factory::{Guest, GuestPlugin};
+use bindings::exports::test::plugins::factory::Guest;
+use bindings::exports::test::plugins::plugin_i::{Guest as IGuest, GuestPlugin};
 
 struct Component;
 
 struct Plugin;
 
-impl Guest for Component {
+impl IGuest for Component {
     type Plugin = Plugin;
+}
 
+impl Guest for Component {
     fn create() -> bindings::exports::test::plugins::factory::Plugin {
         bindings::exports::test::plugins::factory::Plugin::new(Plugin{})
     }

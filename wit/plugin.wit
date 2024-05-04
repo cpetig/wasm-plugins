@@ -1,26 +1,28 @@
 package test:plugins;
 
-interface factory {
+interface plugin-i {
     resource plugin {
         name: func() -> string;
     }
+}
 
+interface factory {
+    use plugin-i.{plugin};
     create: func() -> plugin;
 }
 
 interface factory2 {
-    resource plugin {
-        name: func() -> string;
-    }
-
+    use plugin-i.{plugin};
     create: func() -> plugin;
 }
 
 world plugin {
+    export plugin-i;
     export factory;
 }
 
 world plugin2 {
+    export plugin-i;
     export factory2;
 }
 

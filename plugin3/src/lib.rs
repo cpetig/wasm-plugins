@@ -1,15 +1,18 @@
 #[allow(warnings)]
 mod bindings;
 
-use bindings::exports::test::plugins::factory2::{Guest, GuestPlugin};
+use bindings::exports::test::plugins::factory2::Guest;
+use bindings::exports::test::plugins::plugin_i::{Guest as IGuest, GuestPlugin};
 
 struct Component;
 
 struct Plugin;
 
-impl Guest for Component {
+impl IGuest for Component {
     type Plugin = Plugin;
+}
 
+impl Guest for Component {
     fn create() -> bindings::exports::test::plugins::factory2::Plugin {
         bindings::exports::test::plugins::factory2::Plugin::new(Plugin{})
     }
@@ -17,7 +20,7 @@ impl Guest for Component {
 
 impl GuestPlugin for Plugin {
     fn name(&self) -> String {
-        "plugin3".to_string()
+        "plugin1".to_string()
     }
 }
 
