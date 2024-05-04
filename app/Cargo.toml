@@ -1,0 +1,16 @@
+[package]
+name = "app"
+version = "0.1.0"
+edition = "2021"
+
+[package.metadata.component]
+package = "component:app"
+
+[package.metadata.component.target]
+path = "../wit/plugin.wit"
+world = "app"
+
+[package.metadata.component.dependencies]
+
+[dependencies]
+wit-bindgen-rt = { version = "0.24.0", features = ["bitflags"] }

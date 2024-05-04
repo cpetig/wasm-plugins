@@ -1,0 +1,9 @@
+package example:composition;
+
+let p = new test:plugin {};
+
+let a = new test:app {
+    factory: p.factory,
+};
+
+export a.run;

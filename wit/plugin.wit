@@ -1,0 +1,17 @@
+package test:plugins;
+
+interface factory {
+    resource plugin {
+        name: func() -> string;
+    }
+
+    create: func() -> plugin;
+}
+
+world plugin {
+    export factory;
+}
+
+world app {
+    import factory;
+}
